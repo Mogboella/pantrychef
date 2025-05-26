@@ -1,0 +1,484 @@
+{
+	"info": {
+		"_postman_id": "9af8b4b4-7930-4f0a-ba36-2bcebcb92079",
+		"name": "Demo - 1",
+		"description": "This is the Hackathon Demo for PantryChef",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15418450"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Create Session",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"if (responseJson.session_id) {",
+									"    pm.collectionVariables.set(\"sessionId\", responseJson.session_id);",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/sessions",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This is for the user endpoints"
+		},
+		{
+			"name": "Recipes",
+			"item": [
+				{
+					"name": "Recipes w Query",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Session-ID",
+								"value": "{{sessionId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/api/recipes?query=rice",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"recipes"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "rice"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Session-ID",
+										"value": "{{sessionId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/api/recipes?query=rice",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"api",
+										"recipes"
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "rice"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 May 2025 04:41:26 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "707"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "br"
+								},
+								{
+									"key": "rndr-id",
+									"value": "86829951-d405-4222"
+								},
+								{
+									"key": "vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "x-render-origin-server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "cf-cache-status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "945a9997ac00fc04-DUB"
+								},
+								{
+									"key": "alt-svc",
+									"value": "h3=\":443\"; ma=86400"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"title\": \"Easy Fried Rice\",\n        \"ingredients\": [\n            {\n                \"name\": \"chopped baby carrots\",\n                \"unit\": \"cup\",\n                \"quantity\": \"⅔\"\n            },\n            {\n                \"name\": \"frozen green peas\",\n                \"unit\": \"cup\",\n                \"quantity\": \"½\"\n            },\n            {\n                \"name\": \"vegetable oil\",\n                \"unit\": \"tablespoons\",\n                \"quantity\": \"2\"\n            },\n            {\n                \"name\": \"garlic, minced, or to taste (Optional)\",\n                \"unit\": \"clove\",\n                \"quantity\": \"1\"\n            },\n            {\n                \"name\": \"eggs\",\n                \"unit\": \"large\",\n                \"quantity\": \"2\"\n            },\n            {\n                \"name\": \"leftover cooked and chilled white rice\",\n                \"unit\": \"cups\",\n                \"quantity\": \"3\"\n            },\n            {\n                \"name\": \"soy sauce, or more to taste\",\n                \"unit\": \"tablespoon\",\n                \"quantity\": \"1\"\n            },\n            {\n                \"name\": \"sesame oil, or to taste\",\n                \"unit\": \"teaspoons\",\n                \"quantity\": \"2\"\n            }\n        ],\n        \"prep_time\": \"5 mins\",\n        \"cook_time\": \"15 mins\",\n        \"image_url\": \"\",\n        \"source_url\": \"https://www.allrecipes.com/recipe/79543/fried-rice-restaurant-style/\",\n        \"source\": \"allrecipes\"\n    },\n    {\n        \"title\": \"Asian Coconut Rice\",\n        \"ingredients\": [\n            {\n                \"name\": \"uncooked jasmine rice\",\n                \"unit\": \"cups\",\n                \"quantity\": \"1 ½\"\n            },\n            {\n                \"name\": \"light or full-fat coconut milk, well shaken and stirred\",\n                \"unit\": \"(14 ounce) can\",\n                \"quantity\": \"1\"\n            },\n            {\n                \"name\": \"water\",\n                \"unit\": \"cups\",\n                \"quantity\": \"1 ¼\"\n            },\n            {\n                \"name\": \"sugar\",\n                \"unit\": \"teaspoons\",\n                \"quantity\": \"2\"\n            },\n            {\n                \"name\": \"kosher salt\",\n                \"unit\": \"teaspoons\",\n                \"quantity\": \"1 ½\"\n            },\n            {\n                \"name\": \"coconut oil\",\n                \"unit\": \"teaspoon\",\n                \"quantity\": \"1\"\n            }\n        ],\n        \"prep_time\": \"5 mins\",\n        \"cook_time\": \"25 mins\",\n        \"image_url\": \"\",\n        \"source_url\": \"https://www.allrecipes.com/recipe/56059/asian-coconut-rice/\",\n        \"source\": \"allrecipes\"\n    },\n    {\n        \"title\": \"Creamy Rice Pudding\",\n        \"ingredients\": [\n            {\n                \"name\": \"cold water\",\n                \"unit\": \"cups\",\n                \"quantity\": \"1 ½\"\n            },\n            {\n                \"name\": \"uncooked white rice\",\n                \"unit\": \"cup\",\n                \"quantity\": \"¾\"\n            },\n            {\n                \"name\": \"milk, divided\",\n                \"unit\": \"cups\",\n                \"quantity\": \"2\"\n            },\n            {\n                \"name\": \"white sugar\",\n                \"unit\": \"cup\",\n                \"quantity\": \"⅓\"\n            },\n            {\n                \"name\": \"salt\",\n                \"unit\": \"teaspoon\",\n                \"quantity\": \"¼\"\n            },\n            {\n                \"name\": \"egg, beaten\",\n                \"unit\": \"large\",\n                \"quantity\": \"1\"\n            },\n            {\n                \"name\": \"golden raisins\",\n                \"unit\": \"cup\",\n                \"quantity\": \"⅔\"\n            },\n            {\n                \"name\": \"butter\",\n                \"unit\": \"tablespoon\",\n                \"quantity\": \"1\"\n            },\n            {\n                \"name\": \"vanilla extract\",\n                \"unit\": \"teaspoon\",\n                \"quantity\": \"½\"\n            }\n        ],\n        \"prep_time\": \"10 mins\",\n        \"cook_time\": \"40 mins\",\n        \"image_url\": \"\",\n        \"source_url\": \"https://www.allrecipes.com/recipe/24059/creamy-rice-pudding/\",\n        \"source\": \"allrecipes\"\n    },\n    {\n        \"title\": \"Best Old-Fashioned Creamy Rice Pudding\",\n        \"ingredients\": [\n            {\n                \"name\": \"cooked rice\",\n                \"unit\": \"cups\",\n                \"quantity\": \"1 ½\"\n            },\n            {\n                \"name\": \"milk, divided\",\n                \"unit\": \"cups\",\n                \"quantity\": \"2\"\n            },\n            {\n                \"name\": \"salt\",\n                \"unit\": \"teaspoon\",\n                \"quantity\": \"¼\"\n            },\n            {\n                \"name\": \"golden raisins (Optional)\",\n                \"unit\": \"cup\",\n                \"quantity\": \"⅔\"\n            },\n            {\n                \"name\": \"egg, beaten\",\n                \"unit\": \"\",\n                \"quantity\": \"1\"\n            },\n            {\n                \"name\": \"white sugar\",\n                \"unit\": \"cup\",\n                \"quantity\": \"⅓\"\n            },\n            {\n                \"name\": \"butter\",\n                \"unit\": \"tablespoon\",\n                \"quantity\": \"1\"\n            },\n            {\n                \"name\": \"vanilla extract\",\n                \"unit\": \"teaspoon\",\n                \"quantity\": \"½\"\n            }\n        ],\n        \"prep_time\": \"5 mins\",\n        \"cook_time\": \"20 mins\",\n        \"image_url\": \"\",\n        \"source_url\": \"https://www.allrecipes.com/recipe/228914/old-fashioned-creamy-rice-pudding/\",\n        \"source\": \"allrecipes\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Recommend",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Session-ID",
+								"value": "{{sessionId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/api/recipes/recommend?max_missing=5&min_score=0.4",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"recipes",
+								"recommend"
+							],
+							"query": [
+								{
+									"key": "max_missing",
+									"value": "5"
+								},
+								{
+									"key": "min_score",
+									"value": "0.4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Specific Recipe",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Session-ID",
+								"value": "{{sessionId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/api/recipes/?recipe_id",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"recipes",
+								""
+							],
+							"query": [
+								{
+									"key": "recipe_id",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Main Recipes"
+		},
+		{
+			"name": "Pantry",
+			"item": [
+				{
+					"name": "All Pantry",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Session-ID",
+								"value": "{{sessionId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/api/pantry",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"pantry"
+							],
+							"query": [
+								{
+									"key": "expiring_soon",
+									"value": "false",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Groceries",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Session-ID",
+								"value": "{{sessionId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/api/pantry/grocery",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"pantry",
+								"grocery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Session-ID",
+								"value": "{{sessionId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ingredient\": {\n    \"name\": \"rice\",\n    \"unit\": \"\",\n    \"quantity\": \"\"\n  },\n  \"expiry_date\": \"2025-05-26T04:48:35.259Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/pantry",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"pantry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Grocery Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Session-ID",
+								"value": "{{sessionId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"name\": \"chicken\",\n    \"unit\": \"\",\n    \"quantity\": \"\"\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api_url}}/api/pantry/grocery",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"pantry",
+								"grocery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Session-ID",
+								"value": "{{sessionId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/api/pantry/4",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"pantry",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Grocery Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Session-ID",
+								"value": "{{sessionId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/api/pantry/grocery?item_id=4",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"pantry",
+								"grocery"
+							],
+							"query": [
+								{
+									"key": "item_id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Grocery Purchased",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{api_url}}/api/pantry/grocery/{item_id}/toggle",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"api",
+								"pantry",
+								"grocery",
+								"{item_id}",
+								"toggle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_url",
+			"value": "https://pantrychef-backend.onrender.com",
+			"type": "string"
+		},
+		{
+			"key": "sessionId",
+			"value": ""
+		}
+	]
+}
